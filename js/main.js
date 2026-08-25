@@ -20,14 +20,3 @@ navigation.querySelectorAll('a').forEach((link) => {
 document.querySelector('[data-vote]').addEventListener('click', (event) => {
   event.currentTarget.innerHTML = 'VOTING OPENS SOON <span>♡</span>';
 });
-
-const characterCarousel = document.querySelector('[data-character-carousel]');
-const scrollCharacters = (direction) => {
-  const card = characterCarousel.querySelector('.character-card');
-  const track = characterCarousel.querySelector('.character-grid');
-  const gap = Number.parseFloat(getComputedStyle(track).gap) || 0;
-  characterCarousel.scrollLeft += direction * (card.offsetWidth + gap);
-};
-
-document.querySelector('[data-character-prev]').addEventListener('click', () => scrollCharacters(-1));
-document.querySelector('[data-character-next]').addEventListener('click', () => scrollCharacters(1));
