@@ -20,3 +20,28 @@ navigation.querySelectorAll('a').forEach((link) => {
 document.querySelector('[data-vote]').addEventListener('click', (event) => {
   event.currentTarget.innerHTML = 'VOTING OPENS SOON <span>♡</span>';
 });
+
+const characterCarousel = document.querySelector('[data-character-carousel]');
+const characterPrev = document.querySelector('[data-character-prev]');
+const characterNext = document.querySelector('[data-character-next]');
+
+if (characterCarousel && characterPrev && characterNext) {
+  const updateCharacterNavigation = () => {
+    const maxScroll = characterCarousel.scrollWidth - characterCarousel.clientWidth;
+    characterPrev.disabled = characterCarousel.scrollLeft <= 1;
+    characterNext.disabled = characterCarousel.scrollLeft >= maxScroll - 1;
+  };
+
+  const scrollCharacters = (direction) => {
+    const card = characterCarousel.querySelector('.character-card');
+    const track = characterCarousel.querySelector('.character-grid');
+    const gap = Number.parseFloat(getComputedStyle(track).gap) || 0;
+    characterCarousel.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: 'smooth' });
+  };
+
+  characterPrev.addEventListener('click', () => scrollCharacters(-1));
+  characterNext.addEventListener('click', () => scrollCharacters(1));
+  characterCarousel.addEventListener('scroll', updateCharacterNavigation, { passive: true });
+  window.addEventListener('resize', updateCharacterNavigation);
+  updateCharacterNavigation();
+}
