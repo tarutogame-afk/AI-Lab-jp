@@ -1,0 +1,23 @@
+.characters-page{background:#f7f5f6}
+.characters-list-hero{padding:115px 4.5vw 105px;text-align:center;background:var(--ink);color:#fff}
+.characters-list-hero .eyebrow{margin-bottom:22px;color:var(--pink)}
+.characters-list-hero h1{margin:0;font-size:clamp(68px,10vw,145px);font-weight:500;line-height:.82;letter-spacing:-.055em}
+.characters-list-hero h1 em{font-family:var(--serif);color:var(--pink)}
+.characters-list-hero>p:last-child{margin:38px 0 0;color:#c8c5c9;font-size:13px;letter-spacing:.06em}
+.all-characters{padding:115px 4.5vw 130px}
+.all-characters-heading{text-align:center;margin-bottom:60px}
+.all-characters-heading .eyebrow{margin-bottom:18px}
+.all-characters-heading h2{margin:0;font-size:clamp(50px,7vw,100px);font-weight:500;line-height:.9;letter-spacing:-.05em}
+.all-characters-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:60px 22px;max-width:1320px;margin:0 auto}
+.all-character-card{min-width:0}
+.all-character-card a{display:block;color:inherit}
+.all-character-image{position:relative;aspect-ratio:9/16;overflow:hidden;background:#e8e3e6}
+.all-character-image:after{content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.55);pointer-events:none}
+.all-character-image img{width:100%;height:100%;display:block;object-fit:cover;object-position:center;transition:transform .45s ease}
+.all-character-card a:hover img{transform:scale(1.015)}
+.all-character-meta{padding:24px 8px 0;text-align:center}
+.all-character-meta h3{margin:0 0 13px;font-family:var(--serif);font-size:clamp(30px,3vw,44px);font-weight:600;line-height:1;letter-spacing:.04em}
+.all-character-meta p{margin:0;font-size:11px;font-weight:600;line-height:1.4;letter-spacing:.24em;color:#5e5a60}
+.all-character-meta time{display:block;margin-top:7px;font-size:9px;font-weight:500;line-height:1.4;letter-spacing:.18em;color:#918b92}
+@media(max-width:760px){.characters-list-hero{padding:85px 20px 80px}.characters-list-hero h1{font-size:62px}.characters-list-hero>p:last-child{font-size:11px;line-height:1.8}.all-characters{padding:80px 20px 95px}.all-characters-heading{margin-bottom:42px}.all-characters-heading h2{font-size:48px}.all-characters-grid{grid-template-columns:1fr;gap:50px}.all-character-meta h3{font-size:38px}}
+@media(prefers-reduced-motion:reduce){.all-character-image img{transition:none}}

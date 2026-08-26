@@ -27,10 +27,6 @@ navigation.querySelectorAll('a').forEach((link) => {
   });
 });
 
-document.querySelector('[data-vote]').addEventListener('click', (event) => {
-  event.currentTarget.innerHTML = 'VOTING OPENS SOON <span>♡</span>';
-});
-
 const characterCarousel = document.querySelector('[data-character-carousel]');
 const characterPrev = document.querySelector('[data-character-prev]');
 const characterNext = document.querySelector('[data-character-next]');
