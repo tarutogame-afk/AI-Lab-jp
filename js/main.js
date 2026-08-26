@@ -45,3 +45,22 @@ if (characterCarousel && characterPrev && characterNext) {
   window.addEventListener('resize', updateCharacterNavigation);
   updateCharacterNavigation();
 }
+
+const today = new Date();
+const millisecondsPerDay = 1000 * 60 * 60 * 24;
+
+document.querySelectorAll('.character-card[data-published]').forEach((card) => {
+  const publishedDate = new Date(`${card.dataset.published}T00:00:00`);
+  const daysSincePublished = Math.floor((today - publishedDate) / millisecondsPerDay);
+  let status = '';
+
+  if (daysSincePublished >= 0 && daysSincePublished <= 30) status = 'NEW CHARACTER';
+  if (daysSincePublished >= 31 && daysSincePublished <= 60) status = 'FRESH CHARACTER';
+
+  if (status) {
+    const ribbon = document.createElement('span');
+    ribbon.className = 'character-status';
+    ribbon.textContent = status;
+    card.querySelector('.character-image-wrap').append(ribbon);
+  }
+});

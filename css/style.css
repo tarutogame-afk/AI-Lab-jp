@@ -32,6 +32,7 @@
 .character-image-wrap:after{content:"";position:absolute;inset:12px;border:1px solid rgba(255,255,255,.55);pointer-events:none}
 .character-image-wrap img{width:100%;height:100%;display:block;object-fit:cover;object-position:center}
 .character-image-wrap img[hidden]{display:none}
+.character-status{position:absolute;z-index:2;top:24px;left:-44px;width:168px;padding:7px 0;background:rgba(255,247,249,.9);color:#7f4058;text-align:center;font-size:9px;font-weight:600;line-height:1;letter-spacing:.12em;transform:rotate(-45deg);pointer-events:none}
 .character-meta{padding:24px 8px 10px;text-align:center;color:var(--ink)}
 .character-meta h3{margin:0 0 13px;font-family:"Playfair Display",serif;font-size:clamp(30px,2.7vw,42px);font-weight:600;line-height:1;letter-spacing:.04em}
 .character-meta p{margin:0;font-size:11px;font-weight:600;line-height:1.4;letter-spacing:.24em;color:#5e5a60}
