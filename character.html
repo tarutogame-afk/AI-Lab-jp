@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Lab_jp キャラクター詳細・投票ページ">
+  <meta name="theme-color" content="#fffafb">
+  <title>CHARACTER | AI Lab_jp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=19">
+  <link rel="stylesheet" href="css/character.css?v=1">
+  <script src="js/characters-data.js?v=1" defer></script>
+  <script src="js/character.js?v=1" defer></script>
+</head>
+<body class="character-page">
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="AI Lab_jp ホーム">AI Lab<span>_jp</span></a>
+    <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav"><span></span><span></span></button>
+    <nav class="global-nav" id="global-nav" aria-label="メインナビゲーション">
+      <a href="index.html">Home</a><a href="index.html#characters">Characters</a><a href="#character-vote">Vote</a>
+    </nav>
+  </header>
+
+  <main data-character-page hidden>
+    <section class="character-intro">
+      <p class="eyebrow">AI LAB_JP CHARACTER FILE</p>
+      <h1 data-character-name></h1>
+      <div class="character-intro-meta"><span data-character-season></span><time data-character-period></time></div>
+    </section>
+
+    <section class="detail-section image-slider-section" aria-labelledby="slider-title">
+      <div class="detail-heading"><p class="eyebrow">VISUAL ARCHIVE</p><h2 id="slider-title">IMAGE SLIDER</h2></div>
+      <div class="detail-slider-shell">
+        <button class="detail-slider-nav detail-slider-prev" type="button" aria-label="前の画像を表示" data-slider-prev disabled>‹</button>
+        <div class="detail-slider" data-detail-slider tabindex="0" aria-label="キャラクター画像">
+          <div class="detail-slider-track" data-slider-track></div>
+        </div>
+        <button class="detail-slider-nav detail-slider-next" type="button" aria-label="次の画像を表示" data-slider-next>›</button>
+      </div>
+      <p class="slider-counter"><span data-slide-current>01</span> / <span data-slide-total>04</span></p>
+    </section>
+
+    <section class="detail-section performance" aria-labelledby="performance-title">
+      <div class="detail-heading"><p class="eyebrow">LAST 30 DAYS</p><h2 id="performance-title">PERFORMANCE</h2></div>
+      <div class="performance-grid">
+        <article><span class="performance-icon">♪</span><p>TikTok</p><strong><span data-tiktok>0</span> <small>PV</small></strong></article>
+        <article><span class="performance-icon">◎</span><p>Instagram</p><strong><span data-instagram>0</span> <small>PV</small></strong></article>
+        <article><span class="performance-icon">🌶️</span><p>Chili</p><strong><span data-chili>0</span> <small>PV</small></strong></article>
+        <article class="performance-total"><span class="performance-icon">＋</span><p>TOTAL</p><strong><span data-total>0</span> <small>POINT</small></strong></article>
+      </div>
+    </section>
+
+    <section class="creator-rating" aria-labelledby="rating-title">
+      <p class="eyebrow">FROM AI LAB_JP</p><h2 id="rating-title">CREATOR RATING</h2>
+      <p class="rating-stars" data-rating-stars aria-label="作者評価"></p>
+      <p class="rating-number"><span data-rating-number></span> / 5</p>
+    </section>
+
+    <section class="character-vote-panel" id="character-vote" aria-labelledby="character-vote-title">
+      <p class="eyebrow">ONE VOTE PER DAY</p><h2 id="character-vote-title">YOUR VOTE</h2>
+      <p class="vote-message" data-vote-message>今日の一票を、このキャラクターへ。</p>
+      <button class="detail-vote-button" type="button" data-character-vote></button>
+      <div class="special-image" data-special-image hidden><span>SPECIAL IMAGE</span><strong>COMING SOON</strong></div>
+    </section>
+  </main>
+
+  <section class="character-not-found" data-character-not-found hidden>
+    <p class="eyebrow">CHARACTER NOT FOUND</p><h1>NO CHARACTER</h1><a href="index.html#characters">BACK TO CHARACTERS →</a>
+  </section>
+
+  <footer class="site-footer">
+    <div><a class="logo footer-logo" href="index.html">AI Lab<span>_jp</span></a><p>かわいいを、AIで。</p></div>
+    <div class="footer-meta"><a href="index.html#characters">ALL CHARACTERS ↑</a><p>© 2026 AI Lab_jp</p></div>
+  </footer>
+</body>
+</html>

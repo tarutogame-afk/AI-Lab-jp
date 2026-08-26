@@ -1,5 +1,15 @@
 const menuButton = document.querySelector('.menu-button');
 const navigation = document.querySelector('.global-nav');
+const characterGrid = document.querySelector('[data-character-grid]');
+
+characterGrid.innerHTML = window.CHARACTERS.map((character) => `
+  <article class="character-card" data-published="${character.published}">
+    <a class="character-card-link" href="character.html?id=${character.id}" aria-label="${character.name}の詳細と投票ページを見る">
+      <div class="character-image-wrap"><img src="${character.images[0]}" alt="${character.name}のキャラクタービジュアル" onerror="this.hidden=true"></div>
+      <div class="character-meta"><h3>${character.name}</h3><p>${character.season}</p><time datetime="20${character.period.replace('.', '-')}">${character.period}</time></div>
+    </a>
+  </article>
+`).join('');
 
 menuButton.addEventListener('click', () => {
   const isOpen = menuButton.classList.toggle('open');

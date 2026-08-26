@@ -24,6 +24,7 @@
 .character-carousel::-webkit-scrollbar{display:none}
 .character-grid{display:flex;flex-wrap:nowrap;gap:22px}
 .character-card{min-width:0;flex:0 0 calc((100% - 44px)/3);scroll-snap-align:start}
+.character-card-link{display:block;color:inherit}
 .character-nav{position:absolute;z-index:2;top:calc(50% - 22px);width:48px;height:48px;padding:0;border:1px solid rgba(32,32,36,.25);border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;font:400 34px/1 Arial,sans-serif;cursor:pointer;box-shadow:0 6px 20px rgba(32,32,36,.12);transition:background .2s,color .2s,opacity .2s,transform .2s}
 .character-nav:hover:not(:disabled){background:var(--ink);color:#fff;transform:scale(1.05)}
 .character-nav:disabled{opacity:.28;cursor:default}
