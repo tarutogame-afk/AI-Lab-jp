@@ -25,11 +25,12 @@ if (!character) {
   period.dateTime = `20${character.period.replace('.', '-')}`;
 
   const placeholderLabels = ['OUTFIT 01', 'OUTFIT 02', 'SIGNATURE POSE'];
-  const slides = character.images.map((src, index) => `
+  const detailImages = character.detailImages || character.images;
+  const slides = detailImages.map((src, index) => `
     <figure class="detail-slide"><img src="${src}" alt="${character.name} ビジュアル ${index + 1}"></figure>
   `);
 
-  while (slides.length < 4) {
+  while (detailImages.length === 1 && slides.length < 4) {
     const label = placeholderLabels[slides.length - 1] || `VISUAL ${String(slides.length + 1).padStart(2, '0')}`;
     slides.push(`<div class="detail-slide detail-placeholder"><div><span>${label}</span><strong>COMING SOON</strong></div></div>`);
   }
@@ -65,6 +66,10 @@ if (!character) {
   const rating = Math.max(1, Math.min(5, character.creatorRating));
   document.querySelector('[data-rating-stars]').textContent = '★'.repeat(rating) + '☆'.repeat(5 - rating);
   document.querySelector('[data-rating-number]').textContent = rating;
+  if (character.creatorNote) {
+    document.querySelector('[data-creator-note]').textContent = character.creatorNote;
+    document.querySelector('[data-creator-note-wrap]').hidden = false;
+  }
 
   const voteButton = document.querySelector('[data-character-vote]');
   const voteMessage = document.querySelector('[data-vote-message]');
@@ -84,6 +89,10 @@ if (!character) {
       if (savedVote.characterId === character.id) {
         voteButton.textContent = 'THANK YOU ♡';
         voteMessage.textContent = `${character.name}への投票を受け付けました。`;
+        if (character.voteImage) {
+          specialImage.innerHTML = `<img src="${character.voteImage}" alt="${character.name} 投票特典ビジュアル">`;
+          specialImage.classList.add('has-image');
+        }
         specialImage.hidden = false;
       } else {
         voteButton.textContent = 'VOTED TODAY';
