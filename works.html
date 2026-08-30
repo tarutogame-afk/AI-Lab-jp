@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ETJQKCEZRX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-ETJQKCEZRX');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Lab_jp WORKS — AIビジュアル作品のギャラリー。">
+  <meta name="theme-color" content="#fffafb">
+  <title>WORKS | AI Lab_jp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=20">
+  <link rel="stylesheet" href="css/works.css?v=1">
+  <script src="js/works-data.js?v=1" defer></script>
+  <script src="js/works.js?v=1" defer></script>
+</head>
+<body class="works-page">
+  <header class="site-header">
+    <a class="logo" href="index.html" aria-label="AI Lab_jp ホーム">AI Lab<span>_jp</span></a>
+    <button class="menu-button" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="global-nav"><span></span><span></span></button>
+    <nav class="global-nav" id="global-nav" aria-label="メインナビゲーション">
+      <a href="index.html">Home</a><a href="works.html" aria-current="page">Works</a><a href="characters.html">Characters</a><a href="index.html#vote">Vote</a><a href="index.html#sns">SNS</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="works-intro" aria-labelledby="works-title">
+      <p class="eyebrow">AI VISUAL COLLECTION</p>
+      <h1 id="works-title">WORKS</h1>
+      <p>かわいい、その一瞬を。</p>
+    </section>
+    <section class="works-gallery" aria-label="作品ギャラリー">
+      <div class="works-grid" data-works-grid></div>
+    </section>
+  </main>
+
+  <div class="works-lightbox" data-lightbox hidden role="dialog" aria-modal="true" aria-label="作品画像の拡大表示">
+    <button class="lightbox-close" type="button" data-lightbox-close aria-label="ライトボックスを閉じる">×</button>
+    <button class="lightbox-nav lightbox-previous" type="button" data-lightbox-previous aria-label="前の作品">‹</button>
+    <div class="lightbox-stage">
+      <img data-lightbox-image alt="">
+      <div class="lightbox-caption"><div><h2 data-lightbox-title></h2><p data-lightbox-meta></p></div><p class="lightbox-counter" data-lightbox-counter></p></div>
+    </div>
+    <button class="lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="次の作品">›</button>
+  </div>
+
+  <footer class="site-footer">
+    <div><a class="logo footer-logo" href="index.html">AI Lab<span>_jp</span></a><p>かわいいを、AIで。</p></div>
+    <div class="footer-meta"><a href="index.html">BACK TO HOME ↑</a><p>© 2026 AI Lab_jp</p></div>
+  </footer>
+</body>
+</html>
