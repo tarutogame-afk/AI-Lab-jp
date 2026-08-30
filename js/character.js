@@ -2,6 +2,12 @@ const page = document.querySelector('[data-character-page]');
 const notFound = document.querySelector('[data-character-not-found]');
 const characterId = new URLSearchParams(window.location.search).get('id');
 const character = window.CHARACTERS.find((item) => item.id === characterId);
+const supabaseUrl = 'https://eiwezhlksevvfigdvlax.supabase.co';
+const supabasePublishableKey = 'sb_publishable_kIVztGOcUYOvpfbZquANUw_hQwoLB04';
+const supabaseHeaders = {
+  apikey: supabasePublishableKey,
+  Authorization: `Bearer ${supabasePublishableKey}`,
+};
 
 const menuButton = document.querySelector('.menu-button');
 const navigation = document.querySelector('.global-nav');
@@ -89,10 +95,37 @@ if (!character) {
   const voteButton = document.querySelector('[data-character-vote]');
   const voteMessage = document.querySelector('[data-vote-message]');
   const specialImage = document.querySelector('[data-special-image]');
+  const sharedVoteCount = document.querySelector('[data-shared-vote-count]');
   const voteStorageKey = 'aiLabJpDailyVote';
+  let isSubmittingVote = false;
   const localDate = () => {
     const now = new Date();
     return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  };
+
+  const displayVoteCount = (votes) => {
+    sharedVoteCount.textContent = `♡ ${Number(votes).toLocaleString('ja-JP')} VOTES`;
+  };
+
+  const loadVoteCount = async () => {
+    const endpoint = `${supabaseUrl}/rest/v1/character_votes?character_id=eq.${encodeURIComponent(character.id)}&select=votes`;
+    const response = await fetch(endpoint, { headers: supabaseHeaders });
+    if (!response.ok) throw new Error(`Vote count request failed: ${response.status}`);
+    const rows = await response.json();
+    if (!rows.length) throw new Error('Character vote row not found');
+    displayVoteCount(rows[0].votes);
+    return rows[0].votes;
+  };
+
+  const incrementVote = async () => {
+    const response = await fetch(`${supabaseUrl}/rest/v1/rpc/increment_character_vote`, {
+      method: 'POST',
+      headers: { ...supabaseHeaders, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ p_character_id: character.id }),
+    });
+    if (!response.ok) throw new Error(`Vote request failed: ${response.status}`);
+    const result = await response.text();
+    return result ? JSON.parse(result) : null;
   };
 
   const showVoteState = () => {
@@ -116,14 +149,38 @@ if (!character) {
       return;
     }
 
-    voteButton.disabled = false;
-    voteButton.textContent = `VOTE FOR ${character.name}`;
+    voteButton.disabled = isSubmittingVote;
+    voteButton.textContent = isSubmittingVote ? 'SENDING...' : `VOTE FOR ${character.name}`;
   };
 
-  voteButton.addEventListener('click', () => {
-    localStorage.setItem(voteStorageKey, JSON.stringify({ date: localDate(), characterId: character.id }));
+  voteButton.addEventListener('click', async () => {
+    if (isSubmittingVote || voteButton.disabled) return;
+    isSubmittingVote = true;
     showVoteState();
+    voteMessage.textContent = '投票を送信しています。';
+
+    try {
+      await incrementVote();
+      localStorage.setItem(voteStorageKey, JSON.stringify({ date: localDate(), characterId: character.id }));
+      isSubmittingVote = false;
+      showVoteState();
+    } catch (error) {
+      console.error(error);
+      isSubmittingVote = false;
+      voteMessage.textContent = '投票に失敗しました。時間をおいて再度お試しください。';
+      showVoteState();
+      return;
+    }
+
+    loadVoteCount().catch((error) => {
+      console.error(error);
+      sharedVoteCount.textContent = 'VOTES UNAVAILABLE';
+    });
   });
 
   showVoteState();
+  loadVoteCount().catch((error) => {
+    console.error(error);
+    sharedVoteCount.textContent = 'VOTES UNAVAILABLE';
+  });
 }
