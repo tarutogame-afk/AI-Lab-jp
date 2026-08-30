@@ -2,6 +2,19 @@ const menuButton = document.querySelector('.menu-button');
 const navigation = document.querySelector('.global-nav');
 const characterGrid = document.querySelector('[data-character-grid]');
 const formatSeasonLabel = (season) => `SEASON ${String(Number.parseInt(String(season).match(/\d+/)?.[0], 10)).padStart(2, '0')}`;
+const homeWorks = document.querySelector('[data-home-works]');
+
+if (homeWorks && window.WORKS) {
+  const previewWorks = [...window.WORKS].sort((a, b) => b.displayOrder - a.displayOrder).slice(0, 3);
+  homeWorks.innerHTML = previewWorks.map((work, index) => `
+    <article class="home-work-card${index === 0 ? ' home-work-card-featured' : ''}">
+      <a href="works.html" aria-label="${work.title}をWORKSページで見る">
+        <span class="home-work-image"><img src="${work.image}" alt="${work.title}"></span>
+        <span class="home-work-caption"><b>${work.id}</b><span><strong>${work.title}</strong><small>${work.category} / ${work.date}</small></span></span>
+      </a>
+    </article>
+  `).join('');
+}
 
 characterGrid.innerHTML = window.CHARACTERS.map((character) => `
   <article class="character-card" data-published="${character.published}">
