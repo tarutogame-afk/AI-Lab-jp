@@ -71,6 +71,21 @@ if (!character) {
     document.querySelector('[data-creator-note-wrap]').hidden = false;
   }
 
+  const characterIndex = window.CHARACTERS.findIndex((item) => item.id === character.id);
+  const previousCharacter = window.CHARACTERS[(characterIndex - 1 + window.CHARACTERS.length) % window.CHARACTERS.length];
+  const nextCharacter = window.CHARACTERS[(characterIndex + 1) % window.CHARACTERS.length];
+  const setCirculationCard = (direction, item) => {
+    const link = document.querySelector(`[data-${direction}-character]`);
+    const image = document.querySelector(`[data-${direction}-image]`);
+    link.href = `character.html?id=${item.id}`;
+    image.src = item.images[0];
+    image.alt = `${item.name}のキャラクタービジュアル`;
+    document.querySelector(`[data-${direction}-name]`).textContent = item.name;
+    document.querySelector(`[data-${direction}-meta]`).textContent = `${item.season} / ${item.period}`;
+  };
+  setCirculationCard('previous', previousCharacter);
+  setCirculationCard('next', nextCharacter);
+
   const voteButton = document.querySelector('[data-character-vote]');
   const voteMessage = document.querySelector('[data-vote-message]');
   const specialImage = document.querySelector('[data-special-image]');
