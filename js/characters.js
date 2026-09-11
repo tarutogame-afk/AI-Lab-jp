@@ -62,6 +62,7 @@ document.querySelector('[data-all-characters]').innerHTML = groups.map((group) =
                 <div class="all-character-stats">
                   <div class="all-character-stat"><span>CREATOR RATING</span><strong>${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</strong> <small>${rating} / 5</small></div>
                   <div class="all-character-stat"><span>TOTAL</span><strong>${total.toLocaleString('ja-JP')}</strong> <small>POINT</small></div>
+                  <div class="all-character-stat" data-character-votes="${character.id}"><span>VOTES</span><strong>—</strong></div>
                 </div>
                 <div class="all-character-cta"><span>VIEW &amp; VOTE</span><b>→</b></div>
               </div>
@@ -71,3 +72,21 @@ document.querySelector('[data-all-characters]').innerHTML = groups.map((group) =
     </div>
   </section>
 `).join('');
+
+const updateCharacterVotes = async () => {
+  try {
+    const voteMap = await window.AILabVotes.fetchAll();
+    document.querySelectorAll('[data-character-votes]').forEach((voteElement) => {
+      const votes = voteMap.get(voteElement.dataset.characterVotes) ?? 0;
+      voteElement.querySelector('strong').textContent = votes.toLocaleString('ja-JP');
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+updateCharacterVotes();
+window.addEventListener('focus', updateCharacterVotes);
+window.addEventListener('storage', (event) => {
+  if (event.key === 'aiLabJpDailyVote') updateCharacterVotes();
+});

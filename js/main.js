@@ -3,6 +3,8 @@ const navigation = document.querySelector('.global-nav');
 const characterGrid = document.querySelector('[data-character-grid]');
 const formatSeasonLabel = (season) => `SEASON ${String(Number.parseInt(String(season).match(/\d+/)?.[0], 10)).padStart(2, '0')}`;
 const homeWorks = document.querySelector('[data-home-works]');
+const voteRanking = document.querySelector('[data-vote-ranking]');
+const voteRankingList = document.querySelector('[data-vote-ranking-list]');
 
 if (homeWorks && window.WORKS) {
   const previewWorks = [...window.WORKS].sort((a, b) => b.displayOrder - a.displayOrder).slice(0, 3);
@@ -24,6 +26,44 @@ characterGrid.innerHTML = window.CHARACTERS.map((character) => `
     </a>
   </article>
 `).join('');
+
+const updateVoteRanking = async () => {
+  if (!voteRanking || !voteRankingList) return;
+
+  try {
+    const voteMap = await window.AILabVotes.fetchAll();
+    const rankedCharacters = window.CHARACTERS
+      .map((character, displayOrder) => ({
+        ...character,
+        displayOrder,
+        votes: voteMap.get(character.id) ?? 0,
+      }))
+      .sort((a, b) => b.votes - a.votes || a.displayOrder - b.displayOrder)
+      .slice(0, 5);
+    const topVotes = rankedCharacters[0]?.votes ?? 0;
+
+    voteRankingList.innerHTML = rankedCharacters.map((character, index) => {
+      const barWidth = topVotes > 0 ? (character.votes / topVotes) * 100 : 0;
+      return `
+        <li class="vote-ranking-item">
+          <span class="vote-ranking-position">${String(index + 1).padStart(2, '0')}</span>
+          <strong>${character.name}</strong>
+          <span class="vote-ranking-count">${character.votes.toLocaleString('ja-JP')} VOTES</span>
+          <span class="vote-ranking-track" aria-hidden="true"><span style="width:${barWidth}%"></span></span>
+        </li>`;
+    }).join('');
+    voteRanking.hidden = false;
+  } catch (error) {
+    console.error(error);
+    voteRanking.hidden = true;
+  }
+};
+
+updateVoteRanking();
+window.addEventListener('focus', updateVoteRanking);
+window.addEventListener('storage', (event) => {
+  if (event.key === 'aiLabJpDailyVote') updateVoteRanking();
+});
 
 menuButton.addEventListener('click', () => {
   const isOpen = menuButton.classList.toggle('open');

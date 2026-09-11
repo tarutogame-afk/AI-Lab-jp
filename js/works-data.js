@@ -6,4 +6,5 @@ window.WORKS = [
   { id: '05', image: 'images/works/05.jpg', title: 'PRIVATE MOMENT', date: '2026.08', category: 'AI VISUAL', displayOrder: 30 },
   { id: '06', image: 'images/works/06.jpg', title: 'AT HOME', date: '2026.08', category: 'AI VISUAL', displayOrder: 20 },
   { id: '07', image: 'images/works/07.jpg', title: 'PORTRAIT', date: '2026.08', category: 'AI VISUAL', displayOrder: 10 },
+  { id: '08', image: 'images/works/08.jpg', title: 'PINK MASK', date: '2026.09', category: 'AI VISUAL', displayOrder: 0 },
 ];

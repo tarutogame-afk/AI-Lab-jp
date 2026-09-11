@@ -17,10 +17,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=22">
-  <script src="js/characters-data.js?v=3" defer></script>
-  <script src="js/works-data.js?v=1" defer></script>
-  <script src="js/main.js?v=12" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=23">
+  <script src="js/characters-data.js?v=4" defer></script>
+  <script src="js/works-data.js?v=2" defer></script>
+  <script src="js/votes.js?v=1" defer></script>
+  <script src="js/main.js?v=13" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -66,6 +67,10 @@
 
     <section class="vote" id="vote" aria-labelledby="vote-title">
       <p class="eyebrow">PICK YOUR FAVORITE</p><h2 id="vote-title">CHARACTER<br><em>VOTE</em></h2>
+      <div class="vote-ranking" data-vote-ranking hidden>
+        <h3>CURRENT RANKING</h3>
+        <ol class="vote-ranking-list" data-vote-ranking-list aria-live="polite"></ol>
+      </div>
       <p>あなたの「推し」を教えてください。<br>次の物語の主役になるかも。</p>
       <a class="pill-button" href="characters.html">VIEW ALL CHARACTERS <span>♡</span></a>
       <div class="ticker" aria-hidden="true"><span>VOTE FOR YOUR FAVORITE • VOTE FOR YOUR FAVORITE • </span></div>
