@@ -51,3 +51,11 @@
 @media(max-width:760px){.hero h1{font-size:48px}}
 @media(max-width:760px){.characters,.vote,.sns{scroll-margin-top:70px}.home-works{padding-bottom:55px}.home-works-heading>p{margin-top:22px;font-size:12px}.home-works-grid{grid-template-columns:1fr;grid-template-rows:auto;gap:42px}.home-work-card-featured{grid-row:auto}.home-work-card:nth-child(3){display:none}.home-work-card-featured .home-work-image,.home-work-image{aspect-ratio:16/10}.home-work-caption strong,.home-work-card:not(.home-work-card-featured) .home-work-caption strong{font-size:25px}.home-works-link{margin-top:45px;padding:13px 2px 11px;gap:20px;font-size:15px}.home-works-link span{font-size:22px}.characters .section-heading{margin-bottom:34px}.character-grid{gap:16px}.character-card{flex-basis:82vw}.character-nav{display:none}.character-image-wrap{aspect-ratio:9/16}.characters-all-link{margin-top:44px;padding:13px 2px 11px;gap:20px;font-size:15px}.characters-all-link span{font-size:22px}.social-links>.social-item{grid-template-columns:1fr auto 30px}.social-links>.social-item small{display:block;font-size:8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Readability: supporting text only. Character name sizes remain unchanged. */
+.eyebrow{font-size:11px}.global-nav{font-size:13px}.hero-catch{font-size:clamp(13px,1.15vw,18px)}
+.home-works-heading>p{font-size:15px}.home-work-caption>b{font-size:10px}.home-work-caption small{font-size:10px}.home-works-link,.characters-all-link{font-size:18px}
+.character-status{font-size:10px}.character-meta p{font-size:13px}.character-meta time{font-size:11px}
+.vote>p:not(.eyebrow){font-size:15px}.pill-button{font-size:11px}
+.social-links span,.social-links>.social-item span{font-size:26px}.social-links small,.social-links>.social-item small{font-size:12px}.site-footer>div>p{font-size:13px}.footer-meta{font-size:11px}
+@media(max-width:760px){.hero-catch{font-size:12px}.home-works-heading>p{font-size:13px}.home-work-caption>b{font-size:11px}.home-work-caption small{font-size:10px}.home-works-link,.characters-all-link{font-size:16px}.character-status{font-size:10px}.character-meta p{font-size:13px}.character-meta time{font-size:11px}.vote>p:not(.eyebrow){font-size:15px}.pill-button{font-size:11px}.social-links small,.social-links>.social-item small{font-size:10px}}

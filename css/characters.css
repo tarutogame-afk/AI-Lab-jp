@@ -32,3 +32,9 @@
 .all-character-cta b{font-size:16px;font-weight:400}
 @media(max-width:760px){.characters-list-hero{padding:85px 20px 80px}.characters-list-hero h1{font-size:62px}.characters-list-hero>p:last-child{font-size:11px;line-height:1.8}.all-characters{padding:80px 20px 95px}.all-characters-heading{margin-bottom:42px}.all-characters-heading h2{font-size:48px}.season-group+.season-group{margin-top:90px;padding-top:75px}.season-heading{margin-bottom:35px}.season-heading h3{font-size:45px}.season-heading time{font-size:9px}.season-grid{grid-template-columns:1fr;gap:55px}.all-character-meta h3{font-size:38px}}
 @media(prefers-reduced-motion:reduce){.all-character-image img{transition:none}}
+
+/* Readability: metadata and comparison information only. */
+.characters-list-hero>p:last-child{font-size:15px}.season-heading time{font-size:13px}
+.all-character-meta p{font-size:13px}.all-character-meta time{font-size:11px}
+.all-character-stat span{font-size:10px}.all-character-stat strong{font-size:16px}.all-character-stat small{font-size:10px}.all-character-cta{font-size:11px}
+@media(max-width:760px){.characters-list-hero>p:last-child{font-size:13px}.season-heading time{font-size:11px}.all-character-meta p{font-size:13px}.all-character-meta time{font-size:11px}.all-character-stat span{font-size:10px}.all-character-stat strong{font-size:16px}.all-character-stat small{font-size:10px}.all-character-cta{font-size:11px}}

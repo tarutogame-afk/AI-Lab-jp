@@ -6,3 +6,7 @@
 @media(max-width:900px){.works-grid{gap:70px 18px}.work-item{grid-column:span 6}.work-item-featured{grid-column:span 12}}
 @media(max-width:760px){.works-intro{padding:80px 20px 70px}.works-intro h1{font-size:75px}.works-intro p:last-child{margin-top:32px;font-size:12px}.works-gallery{padding:80px 20px 100px}.works-grid{display:block}.work-item,.work-item-featured{margin-bottom:65px}.work-item:last-child{margin-bottom:0}.work-caption{grid-template-columns:34px 1fr;padding-top:16px}.work-caption h2{font-size:28px}.work-view{opacity:1;transform:none;right:12px;bottom:12px}.works-lightbox{grid-template-columns:48px minmax(0,1fr) 48px;padding:74px 8px 28px}.lightbox-stage{max-width:none}.lightbox-stage img{max-height:68vh}.lightbox-nav{width:42px;height:42px;font-size:25px}.lightbox-caption{margin:15px 8px 0}.lightbox-caption h2{font-size:24px}.lightbox-close{top:16px;right:16px;width:46px;height:46px}.lightbox-counter{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.work-image-frame img,.work-view,.lightbox-close,.lightbox-nav{transition:none}}
+
+/* Readability: gallery supporting text only. */
+.works-intro p:last-child{font-size:14px}.work-image-placeholder small,.work-view,.work-caption>span{font-size:10px}.work-caption p{font-size:11px}.lightbox-caption p,.lightbox-counter{font-size:11px}
+@media(max-width:760px){.works-intro p:last-child{font-size:13px}.work-caption>span{font-size:10px}.work-caption p{font-size:11px}.lightbox-counter{font-size:10px}}
